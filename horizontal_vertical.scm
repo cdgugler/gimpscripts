@@ -22,6 +22,7 @@
 
 (define (script-fu-horizontal-vertical image
                                        drawable)
+ (gimp-image-undo-group-start image)
  (let*
   (
    (imageWidth (car (gimp-image-width image)))
@@ -31,6 +32,7 @@
   (mirror-flip image imageWidth imageHeight ORIENTATION-VERTICAL)
   (gimp-displays-flush)
  )
+ (gimp-image-undo-group-end image)
 )
 
 (script-fu-register

@@ -15,6 +15,7 @@
 
 (define (script-fu-horizontal-mirror image
                                      drawable)
+ (gimp-image-undo-group-start image)
  (let*
   (
    (imageWidth (car (gimp-image-width image)))
@@ -24,6 +25,7 @@
   (mirror_flip image imageWidth newWidth imageHeight)
   (gimp-displays-flush)
  )
+ (gimp-image-undo-group-end image)
 )
 
 (script-fu-register
