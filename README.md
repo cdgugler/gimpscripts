@@ -8,3 +8,6 @@ Mirrors image across horizontal axis.
 
 ### Horizontal Vertical 
 Mirrors image across horizontal axis then vertical axis, creating tileable image.
+
+### Generate Header Images
+Convenience script for Addlime.com. Converts scanned image into multiple horizontal tileable header images.
