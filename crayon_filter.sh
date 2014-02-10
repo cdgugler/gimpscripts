@@ -1,7 +1,10 @@
 #!/bin/bash
 
 # Extract 6 frames per second from video
-ffmpeg -i IMG_1948.MOV -r 6 -t 4 -ss 00:00:07 -s hd720 image%3d.png
+ffmpeg -i $1 -r 6 -s hd720 image%3d.png
+
+# Debug
+# ffmpeg -i IMG_1948.MOV -r 6 -t 4 -ss 00:00:07 -s hd720 image%3d.png
 
 # Apply gaussian blur of 6 px to all images
 gimp -i -b '(batch-gauss-blur "*.png" 6 6)' -b '(gimp-quit 0)'
@@ -22,3 +25,8 @@ rm ./*.svg
     
 # Gimp script to add crayon texture to all images
 gimp -i -b '(crayon-fx "*.png")' -b '(gimp-quit 0)'
+
+# And make it a video again
+ffmpeg -r 6 -i image%03d.png.svg.png -vcodec qtrle -r 24 -pix_fmt rgb24 ${1}-crayon.mov
+
+rm ./*.png

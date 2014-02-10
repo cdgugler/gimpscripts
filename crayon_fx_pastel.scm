@@ -1,4 +1,4 @@
-(define (crayon-fx pattern)
+(define (crayon-fx-pastel pattern)
   (let* ((filelist (cadr (file-glob pattern 1))))
   (define crayon1 (string-append gimp-directory "/scripts/image/crayontex01.png"))
   (define crayon2 (string-append gimp-directory "/scripts/image/crayontex02.png"))
